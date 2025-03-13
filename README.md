@@ -4,7 +4,7 @@
 
 ### Clone the Repository  
 ```sh
-git clone https://github.com/Nick18899/ittp/edit/master)
+git clone https://github.com/Nick18899/ittp/edit/master
 cd iitp_interpolation  
 ```
 

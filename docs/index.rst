@@ -9,7 +9,7 @@ The IITP_INTERPOLATION project
 
 This is the student ITTP project. Here is implementation of common interpolation techniques.
 
-Project paper: https://www.overleaf.com/project/675a076aed19c14b501fd5e3
+Project paper: https://www.overleaf.com/read/dbkgzccjrhtw#fc213f
 
 Installation
 ------------
@@ -54,15 +54,6 @@ Running project documentation build:
    $ nox -rs docs
 
 Running techniques:
-
-.. code-block:: console
-
-   $ poetry run cartesiangrid [OPTIONS]
-
-
-.. option:: --[IMAGE PATH]
-
-   Path to the chosen image (default: random generated 512x512)
 
 .. code-block:: console
 

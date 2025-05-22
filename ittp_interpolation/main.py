@@ -16,42 +16,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def module_cartesiangrid():
-
-    """Process images using CartesianGrid interpolation.
-
-    This function:
-    1. Parses input arguments for CartesianGrid interpolation
-    2. Loads and displays the original image
-    3. Performs CartesianGrid interpolation
-    4. Logs and returns the interpolation results
-
-    The function uses the Parser class to handle command line arguments
-    and configuration for the CartesianGrid interpolation process.
-    """
-
-    logger.info("cartesian module running...")
-
-    # parse data
-    parser = Parser(
-        description="Process images with CartesianGrid interpolation.",
-        module_name="cartesiangrid"
-    )
-    parser.make_parse()
-    params = parser.get_params()
-
-    image, limits, points = params["image"], params["limits"], params["points"]
-
-    # show base image
-    show_image(image)
-    # does linear interpolation
-    grid = CartesianGrid(limits, image)
-
-    # interpolate for given points
-    grid_result = grid(points[0], points[1], points[2])
-    logger.info(f"interpolate for given points: {grid_result}")
-
-
 def nearest_neighbour():
 
     """Perform nearest neighbor interpolation on an input image.

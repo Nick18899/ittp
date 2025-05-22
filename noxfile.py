@@ -1,24 +1,7 @@
-# noxfile.py
 import nox_poetry
 
 # Default locations to check/format
 locations = "src", "tests", "noxfile.py", "docs/conf.py"
-
-
-# @nox_poetry.session(python=["3.12"])
-# def lint(session) -> None:
-#     """Lint using flake8."""
-#     args = session.posargs or locations
-#     session.install("flake8")
-#     session.run("flake8", *args)
-
-
-# @nox_poetry.session(python="3.8")
-# def black(session) -> None:
-#     """Run black code formatter."""
-#     args = session.posargs or locations
-#     session.install("black")
-#     session.run("black", *args)
 
 
 @nox_poetry.session(python=["3.11", "3.12", "3.13"])
@@ -35,7 +18,7 @@ def tests(session) -> None:
     session.run("pytest", "--cov")
 
 
-@nox_poetry.session(python=["3.11", "3.13"])
+@nox_poetry.session(python=["3.11", "3.12","3.13"])
 def docs(session) -> None:
     """Build the documentation."""
     # Install main dependencies

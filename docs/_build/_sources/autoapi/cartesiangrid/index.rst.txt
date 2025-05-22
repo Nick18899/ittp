@@ -1,0 +1,43 @@
+cartesiangrid
+=============
+
+.. py:module:: cartesiangrid
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   cartesiangrid.__doc__
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   cartesiangrid.CartesianGrid
+
+
+Module Contents
+---------------
+
+.. py:class:: CartesianGrid(bounds, data)
+
+   Bases: :py:obj:`object`
+
+
+   .. py:attribute:: data
+
+
+   .. py:attribute:: bounds
+
+
+   .. py:method:: __call__(*positions)
+
+
+.. py:data:: __doc__
+   :value: None
+
+

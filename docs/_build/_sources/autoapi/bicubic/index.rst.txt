@@ -1,0 +1,81 @@
+bicubic
+=======
+
+.. py:module:: bicubic
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bicubic.__doc__
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bicubic.bicubic_interpolation
+
+
+Module Contents
+---------------
+
+.. py:function:: bicubic_interpolation(image, scale_factor)
+
+   Bicubic interpolation implementation for RGB images.
+
+   This module provides a function to perform bicubic interpolation on RGB images
+   using scipy's ndimage.zoom function. The interpolation is applied uniformly
+   across all color channels to resize the image by a given scale factor.
+
+   The main function bicubic_interpolation() handles:
+   - Input validation for RGB images and positive scale factors
+   - Calculation of new dimensions
+   - Application of bicubic interpolation (order=3)
+   - Proper type preservation of the output image
+
+   Example usage:
+       >>> from bicubic_interpolation import bicubic_interpolation
+       >>> import numpy as np
+       >>> img = np.random.randint(0, 256, (100, 100, 3), dtype=np.uint8)
+       >>> scaled_img = bicubic_interpolation(img, 1.5)
+
+
+.. py:data:: __doc__
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """
+          Bicubic interpolation implementation for RGB images.
+      
+          This module provides a function to perform bicubic interpolation on RGB images
+          using scipy's ndimage.zoom function. The interpolation is applied uniformly
+          across all color channels to resize the image by a given scale factor.
+      
+          The main function bicubic_interpolation() handles:
+          - Input validation for RGB images and positive scale factors
+          - Calculation of new dimensions
+          - Application of bicubic interpolation (order=3)
+          - Proper type preservation of the output image
+      
+          Example usage:
+              >>> from bicubic_interpolation import bicubic_interpolation
+              >>> import numpy as np
+              >>> img = np.random.randint(0, 256, (100, 100, 3), dtype=np.uint8)
+              >>> scaled_img = bicubic_interpolation(img, 1.5)
+          """
+
+   .. raw:: html
+
+      </details>
+
+
+

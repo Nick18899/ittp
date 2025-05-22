@@ -4,7 +4,7 @@
 
 ### Clone the Repository  
 ```sh
-git clone https://github.com/ 
+git clone https://github.com/Nick18899/ittp.git
 cd iitp_interpolation  
 ```
 
@@ -27,14 +27,10 @@ All checks passed!
 
 ## Running the Project
 
-### Cartesian Grid  
-```sh
-poetry run cartesiangrid --image_path [...] --limits [...] --points [...]  
-```
 
 ### Interpolation  
 ```sh
-poetry run interp  
+poetry run 
 ```
 
 ### Regular Grid  

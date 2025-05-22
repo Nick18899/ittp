@@ -27,14 +27,10 @@ All checks passed!
 
 ## Running the Project
 
-### Cartesian Grid  
-```sh
-poetry run cartesiangrid --image_path [...] --limits [...] --points [...]  
-```
 
 ### Interpolation  
 ```sh
-poetry run interp  
+poetry run 
 ```
 
 ### Regular Grid  

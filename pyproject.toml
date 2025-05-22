@@ -1,5 +1,5 @@
 [project]
-name = "ittp-python"
+name = "ittp-interpolation"
 version = "0.1.0"
 dynamic = ["version"]
 description = "Study project about interpolation"
@@ -45,15 +45,30 @@ namespaces = false
 
 [tool.poetry.scripts]
 format = "black:main"
-cartesiangrid = "main:module_cartesiangrid"
-interp = "main:module_interp"
-regulargrid = "main:module_regulargrid"
+nearest_neighbour = "main:nearest_neighbour"
+bilinear = "main:bilinear"
+bicubic = "main:bicubic"
 
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
 ruff = "^0.9.9"
+pytest = "^8.3.5"
+pytest-cov = "^6.0.0"
+mypy = "^1.15.0"
+sphinx = "^7.2.6"
 
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.2.6"  # Latest in 7.x series
+myst-parser = "^2.0.0"
+sphinx-rtd-theme = "^2.0.0"
+sphinx-autoapi = "^3.6.0"
+furo = "^2024.8.6"
+sphinx-copybutton = "^0.5.2"
+sphinx-design = "^0.6.1"
 
 [tool.ruff]
 # Enable flake8-bugbear (\B) rules.

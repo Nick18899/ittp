@@ -1,35 +1,148 @@
-from ittp_python.cartesiangrid import CartesianGrid
-from utils.image import show_image
-from utils.parser import Parser
+import logging
+
+from ittp_interpolation.techniques.bicubic import bicubic_interpolation
+from ittp_interpolation.techniques.bilinear import bilinear_interpolation
+from ittp_interpolation.techniques.nearest_neoghbour import nearest_neighbor_interpolation
+from ittp_interpolation.utils.image import show_image, show_images_original_size
+from ittp_interpolation.utils.parser import Parser
+
+# Create a logger for your module
+# Initialize logging (do this ONCE at startup)
+logging.basicConfig(
+    level=logging.INFO,  # Set minimum log level
+    format='%(levelname)s - %(message)s'  # Simple format
+)
+
+logger = logging.getLogger(__name__)
 
 
-def module_cartesiangrid():
-    """Run the Cartesian Grid interpolation module."""
-    print("Cartesian module running...")
-
-    # Parse the input data
-    parser = Parser(description='Process images with CartesianGrid interpolation.', module_name='cartesiangrid')
-    parser.make_parse()  # Execute the parsing process
-    params = parser.get_params()  # Retrieve parameters from the parser
-
-    image, limits, points = params['image'], params['limits'], params['points']  # Extract relevant parameters
-
-    # Display the original image
-    show_image(image)
-
-    # Create a CartesianGrid instance with the specified limits and image data
-    grid = CartesianGrid(limits, image)
-
-    # Interpolate values at the given points using the Cartesian grid
-    interpolated_value = grid(points[0], points[1], points[2])
-    print(f'Interpolated value for given points: {interpolated_value}')
 
 
-def module_interp():
-    """Run the interpolation module."""
-    print("Interpolation module running...")
+def nearest_neighbour():
+
+    """Perform nearest neighbor interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for nearest neighbor interpolation
+    2. Loads the original image
+    3. Applies nearest neighbor interpolation with a scale factor of 2.5
+    4. Displays original and scaled images side by side
+    5. Logs the dimensions of both images
+
+    Returns:
+        None: Results are displayed visually and logged
+    """
+
+    logger.info("nearest neighbour module running...")
+
+    # parse data
+    parser = Parser(
+        description="Process images with nearest neighbour interpolation.",
+        module_name="nearest_neighbour"
+    )
+    parser.make_parse()
+    params = parser.get_params()
+
+    image = params["image"]
+
+    scale_factor = 2.5
+    scaled_img = nearest_neighbor_interpolation(image, scale_factor)
+
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
+        image,
+        "Original Image",
+        scaled_img,
+        f"Nearest-Neighbor interpolation (Scale: {scale_factor})",
+    )
 
 
-def module_regulargrid():
-    """Run the regular grid module."""
-    print("Regular Grid module running...")
+def bilinear():
+
+    """Perform bilinear interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for bilinear interpolation
+    2. Loads the original image
+    3. Applies bilinear interpolation with a scale factor of 2.5
+    4. Displays original and interpolated images side by side
+    5. Logs the dimensions of both images
+
+    The bilinear interpolation provides smoother results than nearest neighbor
+    while being computationally less intensive than bicubic interpolation.
+    """
+
+    logger.info("bilinear neighbour module running...")
+
+    # parse data
+    parser = Parser(
+        description="Process images with bilinear interpolation.",
+        module_name="bilinear",
+    )
+    parser.make_parse()
+    params = parser.get_params()
+
+    image = params["image"]
+
+    scale_factor = 2.5
+    scaled_img = bilinear_interpolation(image, scale_factor)
+
+
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
+        image,
+        "Original Image",
+        scaled_img,
+        f"bilinear Image (Scale: {scale_factor})",
+    )
+
+
+def bicubic():
+
+    """Perform bicubic interpolation on an input image.
+
+    This function:
+    1. Parses input arguments for bicubic interpolation
+    2. Loads the original image
+    3. Applies bicubic interpolation with a scale factor of 2.5
+    4. Displays original and interpolated images side by side
+    5. Logs the dimensions of both images
+
+    Bicubic interpolation typically produces the highest quality results among
+    the common interpolation methods, at the cost of higher computational
+    complexity.
+    """
+
+    logger.info("bicubic neighbour module running...")
+
+    # parse data
+    parser = Parser(
+        description="Process images with bicubic interpolation.",
+        module_name="bicubic",
+    )
+    parser.make_parse()
+    params = parser.get_params()
+
+    image = params["image"]
+
+    scale_factor = 2.5
+    scaled_img = bicubic_interpolation(image, scale_factor)
+
+    logger.info(f'Original shape: {image.shape}')
+    logger.info(f'Scaled shape: {scaled_img.shape}')
+
+    show_images_original_size(
+        image,
+        "Original Image",
+        scaled_img,
+        f"bicubic Image (Scale: {scale_factor})",
+    )
+
+
+if __name__ == "__main__":
+    """Main entry point when script is run directly."""
+    logger.info("main script started as module")
